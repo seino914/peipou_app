@@ -6,6 +6,30 @@
 pnpm install
 ```
 
+### データベース設定
+```
+npx supabase@latest init
+```
+
+#### ローカルデータベースを開始
+
+```
+npx supabase start
+```
+
+#### ローカルデータベースを停止
+
+```
+npx supabase stop
+```
+
+#### ローカルデータベースをリセット
+
+```
+npx supabase db reset
+```
+
+
 #### 型チェック
 
 ```bash
