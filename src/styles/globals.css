@@ -9,7 +9,7 @@
 
 @layer base {
   body {
-    @apply bg-[var(--background)] text-[var(--foreground)] font-sans;
+    @apply bg-[var(--background)] font-sans text-[var(--foreground)];
   }
 }
 
