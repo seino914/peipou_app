@@ -32,6 +32,7 @@ npx supabase db reset
 ```
 
 #### generate
+
 ```
 pnpm prisma generate
 ```
