@@ -1,5 +1,4 @@
 import { PrismaClient, Role } from "@prisma/client";
-import * as argon2 from "argon2";
 
 const prisma = new PrismaClient();
 
@@ -9,29 +8,33 @@ async function main() {
     await prisma.user.deleteMany();
     console.log("Existing data cleared.");
 
+    // Create test users
     const users = await Promise.all([
+      // 管理者ユーザー
       prisma.user.create({
         data: {
-          email: "alice@example.com",
-          name: "Alice",
-          password: await argon2.hash("alicepass123"),
+          email: "admin@example.com",
+          name: "管理者",
           role: Role.ADMIN,
+          profile: {
+            create: {
+              bio: "管理者アカウントです",
+            },
+          },
         },
       }),
+      // Googleユーザー
       prisma.user.create({
         data: {
-          email: "bob@example.com",
-          name: "Bob",
-          password: await argon2.hash("bobpass456"),
+          email: "google@example.com",
+          name: "Googleユーザー",
           role: Role.USER,
-        },
-      }),
-      prisma.user.create({
-        data: {
-          email: "charlie@example.com",
-          name: "Charlie",
-          password: await argon2.hash("charliepass789"),
-          role: Role.USER,
+          providerId: "google_test_id",
+          profile: {
+            create: {
+              bio: "Googleでログインしたユーザーです",
+            },
+          },
         },
       }),
     ]);

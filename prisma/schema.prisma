@@ -15,40 +15,57 @@ datasource db {
 }
 
 model User {
-  id       Int      @id @default(autoincrement())
-  email    String   @unique
-  name     String?
-  password String
-  role     Role     @default(USER)
-  posts    Post[]
-  profile  Profile?
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  image         String?
+  provider      Provider  @default(EMAIL)
+  providerId    String?   // OAuth プロバイダーのユーザーID
+  role          Role      @default(USER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  profile       Profile?
+  posts         Post[]
 }
 
 model Profile {
-  id     Int    @id @default(autoincrement())
-  bio    String
-  user   User   @relation(fields: [userId], references: [id])
-  userId Int    @unique
+  id          String    @id @default(cuid())
+  bio         String?
+  location    String?
+  website     String?
+  user        User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String    @unique
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
 }
 
 model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        String    @id @default(cuid())
   title     String
-  published Boolean  @default(false)
-  author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
+  content   String?
+  published Boolean   @default(false)
+  author    User      @relation(fields: [authorId], references: [id])
+  authorId  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
   tags      Tag[]
 }
 
 model Tag {
-  id    Int    @id @default(autoincrement())
-  name  String
-  posts Post[]
+  id        String    @id @default(cuid())
+  name      String    @unique
+  posts     Post[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 enum Role {
   USER
   ADMIN
+}
+
+enum Provider {
+  EMAIL
+  GOOGLE
+  GITHUB
 }
