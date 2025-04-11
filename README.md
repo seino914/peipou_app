@@ -6,7 +6,8 @@
 pnpm install
 ```
 
-### データベース設定
+<details>
+<summary>データベース設定</summary>
 
 ```
 npx supabase@latest init
@@ -29,6 +30,34 @@ npx supabase stop
 ```
 npx supabase db reset
 ```
+
+#### generate
+```
+pnpm prisma generate
+```
+
+#### migration
+
+```
+pnpm run db:migrate --name マイグレーション名
+```
+
+#### seed
+
+```
+pnpm run db:seed
+```
+
+#### Prisma Studio 起動
+
+```
+pnpm run db:studio
+```
+
+</details>
+
+<details>
+<summary>その他</summary>
 
 #### 型チェック
 
@@ -57,3 +86,5 @@ pnpm run lint --fix
 ```bash
 pnpm run format
 ```
+
+</details>
