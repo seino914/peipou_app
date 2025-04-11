@@ -7,6 +7,7 @@ pnpm install
 ```
 
 ### データベース設定
+
 ```
 npx supabase@latest init
 ```
@@ -28,7 +29,6 @@ npx supabase stop
 ```
 npx supabase db reset
 ```
-
 
 #### 型チェック
 
