@@ -127,6 +127,17 @@ pnpm run typecheck
 ```
 
 #### クリーンアップ
+<details>
+<summary>クリーンアップ対象ファイル、ディレクトリ</summary>
+
+- `.next/`
+- `node_modules/`
+- `dist/`
+- `out/`
+- gitで管理されていないファイル
+- 未追跡のファイル
+
+</details>
 
 ```bash
 pnpm run clean
