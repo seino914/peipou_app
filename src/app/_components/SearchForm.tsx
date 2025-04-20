@@ -8,10 +8,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 
-
-
-
-
 // APIレスポンスの型定義を修正
 interface SearchResult {
   id: number;
