@@ -67,9 +67,7 @@ export function SearchForm() {
       }
 
       const data = await response.json();
-      // データの構造に応じて適切に設定
       setSearchResults(data.items);
-      console.log("API Response:", data.items);
     } catch (error) {
       console.error("Error:", error);
       setError(error instanceof Error ? error.message : "エラーが発生しました");
@@ -78,41 +76,43 @@ export function SearchForm() {
     }
   }
 
-  // console.log("searchResults:", searchResults);
-
   return (
     <div className="space-y-6">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="mx-auto flex max-w-lg items-center gap-4"
+          className="mx-auto flex max-w-lg items-start gap-4 p-4"
         >
-          <FormField
-            control={form.control}
-            name="searchQuery"
-            render={({ field }) => (
-              <FormItem className="flex-1">
-                <FormControl>
-                  <Input
-                    type="text"
-                    placeholder="地域名を入力（例：渋谷、新宿、池袋）"
-                    className="w-full"
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage className="text-sm text-red-500" />
-              </FormItem>
-            )}
-          />
-          <Button
-            type="submit"
-            variant="default"
-            size="default"
-            className="min-w-[100px] px-8"
-            disabled={isLoading || !form.formState.isValid}
-          >
-            {isLoading ? "検索中..." : "検索"}
-          </Button>
+          <div className="flex-1">
+            <FormField
+              control={form.control}
+              name="searchQuery"
+              render={({ field }) => (
+                <FormItem>
+                  <div className="flex gap-4">
+                    <FormControl>
+                      <Input
+                        type="text"
+                        placeholder="地域名を入力（例：渋谷、新宿、池袋）"
+                        className="w-full"
+                        {...field}
+                      />
+                    </FormControl>
+                    <Button
+                      type="submit"
+                      variant="default"
+                      size="default"
+                      className="min-w-[100px] px-8"
+                      disabled={isLoading}
+                    >
+                      {isLoading ? "検索中..." : "検索"}
+                    </Button>
+                  </div>
+                  <FormMessage className="mt-2 text-sm text-red-500" />
+                </FormItem>
+              )}
+            />
+          </div>
         </form>
       </Form>
 
