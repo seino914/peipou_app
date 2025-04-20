@@ -2,17 +2,15 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormMessage,
-} from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
+
+
+
+
 
 // APIレスポンスの型定義を修正
 interface SearchResult {
@@ -137,13 +135,12 @@ export function SearchForm() {
               ))}
             </div>
           )}
+          {!isLoading && searchResults.length === 0 && (
+            <p className="text-center text-muted-foreground">
+              検索結果がありません
+            </p>
+          )}
         </div>
-
-        {!isLoading && searchResults.length === 0 && (
-          <p className="text-center text-muted-foreground">
-            検索結果がありません
-          </p>
-        )}
       </div>
     </div>
   );
