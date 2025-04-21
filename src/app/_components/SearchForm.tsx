@@ -111,7 +111,7 @@ export function SearchForm() {
       </Form>
 
       {/* 検索結果の表示 */}
-      <div className="mx-auto max-w-2xl">
+      <div className="mx-auto max-w-5xl">
         {error && (
           <div className="rounded-md bg-red-50 p-4 text-red-700">{error}</div>
         )}
