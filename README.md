@@ -60,6 +60,7 @@
 - Prisma
 - supabase
 - shadcn ui
+- Framer Motion
 
 ## 環境構築
 
