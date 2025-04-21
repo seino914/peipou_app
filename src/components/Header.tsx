@@ -25,7 +25,6 @@ const Header = () => {
   }
 
   const menuItems = [
-    { href: '/', label: 'Home' },
     { href: '/about', label: 'アプリ概要' },
     { href: '/terms', label: '利用規約' },
     { href: '/contact', label: 'お問い合わせ' },
@@ -37,7 +36,7 @@ const Header = () => {
       <nav className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="text-xl font-bold">
-            PeiPou
+            peipou
           </Link>
 
           {/* Desktop Menu */}
