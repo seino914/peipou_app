@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Header from "@/components/Header";
 
 import "../styles/globals.css";
 
@@ -23,7 +24,10 @@ export default function RootLayout({
       <head />
       <body className={inter.className}>
         <div className="min-h-screen bg-background font-sans antialiased">
-          {children}
+          <Header />
+          <main className="pt-16">
+            {children}
+          </main>
         </div>
       </body>
     </html>
