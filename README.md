@@ -61,6 +61,7 @@
 - supabase
 - shadcn ui
 - Framer Motion
+- Formspree（フォーム管理）
 
 ## 環境構築
 
